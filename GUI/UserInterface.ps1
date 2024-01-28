@@ -4,28 +4,36 @@ $FormObject = [System.Windows.Forms.Form]
 $LabelObject = [System.Windows.Forms.Label]
 $ButtonObject = [System.Windows.Forms.Button]
 
-$HelloWorldForm=New-Object $FormObject
-$HelloWorldForm.ClientSize='500,300'
-$HelloWorldForm.Text='Hello World - Tutorial'
-$HelloWorldForm.BackColor="#001633"
+$UltimateWinSetup=New-Object $FormObject
+$UltimateWinSetup.ClientSize='800,600'
+$UltimateWinSetup.Text='The Ultimate Windows Setup'
+$UltimateWinSetup.BackColor="#001633"
 
 $lbltitle=New-Object $LabelObject
-$lbltitle.Text='Hello World!'
+$lbltitle.Text='Select what to run'
 $lbltitle.AutoSize=$true
-$lbltitle.Font='Verdana,24,style=Bold'
-$lbltitle.Location=New-Object System.Drawing.Point(120,110)
+$lbltitle.Font='Consolas,24,style=Bold'
+$lbltitle.ForeColor="#ffffff"
+$lbltitle.Location=New-Object System.Drawing.Point(230,20)
 
 $btnHello=New-Object $ButtonObject
-$btnHello.Text='Say Hello'
+$btnHello.Text='Run Debloat Script'
 $btnHello.Autosize=$true
-$btnHello.Location=New-Object System.Drawing.Point(175,180)
+$btnHello.Location=New-Object System.Drawing.Point(300,100)
+$btnHello.Font='Consolas,14'
+$btnHello.ForeColor="#ffffff"
+$btnHello.Add_Click({
+    & "/Debloat/debloat1.ps1"
+    $lbltitle.Text = "Debloat script executed!"
+})
 
-$HelloWorldForm.Controls.AddRange(@($lbltitle,$btnHello))
+$UltimateWinSetup.Controls.AddRange(@($lbltitle,$btnHello))
+
 
 
 # displays form
-$HelloWorldForm.ShowDialog()
+$UltimateWinSetup.ShowDialog()
 
 
 ## cleans up form
-$HelloWorldForm.Dispose()
+$UltimateWinSetup.Dispose()
