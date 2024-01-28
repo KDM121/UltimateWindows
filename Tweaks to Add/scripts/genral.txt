@@ -1,0 +1,24 @@
+Set up windows and use local account and select world time/currency
+
+then install atlas playbook and atlas ame wizard
+
+Install latest drivers for Gigabyte B550M Ds3h motherboard. The chipset, audio aand LAN drivers.
+
+install latest game ready drivers for Gigabyte RTX 4060 (Not Notebook 4060)
+
+Check for windows updates and install them then after they are completed restart the system
+
+then run irm https://christitus.com/win | iex and then Select the winget reinstall feature then go to tweaks aand click on desktop and run tweaks
+
+disable mouse acceleration
+
+run all of the FPS boost folder regisry tweaks
+
+turn transparancy effects off
+
+
+
+
+
+
+
