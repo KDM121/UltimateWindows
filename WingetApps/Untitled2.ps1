@@ -3,12 +3,14 @@ Add-Type -AssemblyName System.Windows.Forms
 
 # Define categories and applications
 $categories = @{
-    "Internet" = @("Firefox", "Chrome");
-    "Tools" = @("VSCode", "Sublime");
-    "Office" = @("MSOffice", "LibreOffice");
-    "Media" = @("VLC", "Spotify");
-    "Utilities" = @("7zip", "WinRAR");
-    "Other" = @("Slack", "Zoom")
+    "Internet" = @("Ablaze.Floorp", "Alex313031.Thorium", "Waterfox.Waterfox", "Mozilla.Firefox", "LibreWolf.LibreWolf");
+    "Tools" = @("Microsoft.VisualStudioCode", "Notepad++.Notepad++", "Yubico.Authenticator", "Yubico.YubikeyManager", "Yubico.YubiKeyPersonalizationTool", "ShareX.ShareX", "REALiX.HWiNFO");
+    "Office" = @("BlenderFoundation.Blender", "FreeCAD.FreeCAD", "TheDocumentFoundation.LibreOffice");
+    "Media" = @("Discord.Discord", "OBSProject.OBSStudio", "dotPDNLLC.paintdotnet", "Parsec.Parsec", "Telegram.TelegramDesktop");
+    "Utilities" = @("7zip.7zip", "Famatech.AdvancedIPScanner", "Balena.Etcher", "AdrienAllard.FileConverter", "Rufus.Rufus", "OpenJS.NodeJS", "Yarn.Yarn");
+    "Other" = @("GitHub.GitHubDesktop", "Iriun.IriunWebcam", "Google.NearbyShare", "Oracle.VirtualBox", "Ookla.Speedtest.Desktop", "Rils.TouchPortal")
+    "Security" = @("Bitwarden.Bitwarden", "MudhookMarketing.IPVanish", "Insecure.Nmap",  "Microsoft.PowerToys", "ProtonTechnologies.ProtonVPN", "WireGuard.WireGuard")
+    "Gaming" = @("EpicGames.EpicGamesLauncher", "Logitech.GHUB", "Valve.Steam", "SteelSeries.GG", "Moonsworth.LunarClient")
 }
 
 # Function to install applications
@@ -26,7 +28,7 @@ function Install-Applications {
 # Create form
 $form = New-Object System.Windows.Forms.Form
 $form.Text = 'Application Installer'
-$form.Size = New-Object System.Drawing.Size(1120, 300)  # Adjust width for columns
+$form.Size = New-Object System.Drawing.Size(1500, 300)  # Adjust width for columns
 $form.StartPosition = 'CenterScreen'
 
 # Create GroupBoxes for each category
@@ -66,29 +68,6 @@ $button.Add_Click({
 })
 $form.Controls.Add($button)
 
-$predeterminedApps = @("VSCode", "MSOffice", "VLC")  # Example set
-$selectPredeterminedButton = New-Object System.Windows.Forms.Button
-$selectPredeterminedButton.Location = New-Object System.Drawing.Point(550, 190)  # Adjust position as needed
-$selectPredeterminedButton.Size = New-Object System.Drawing.Size(150, 30)
-$selectPredeterminedButton.Text = 'Select Predetermined'
-$selectPredeterminedButton.Add_Click({
-    foreach ($groupBox in $form.Controls) {
-        if ($groupBox -is [System.Windows.Forms.GroupBox]) {
-            $checkedListBox = $groupBox.Controls[0]
-            $checkedListBox.SetItemChecked(0, $false)  # Clear all checks initially
-            foreach ($app in $predeterminedApps) {
-                $index = $checkedListBox.Items.IndexOf($app)
-                if ($index -ge 0) {
-                    $checkedListBox.SetItemChecked($index, $true)  # Check predetermined apps
-                }
-            }
-        }
-    }
-    $selectedApplications = $predeterminedApps
-    Install-Applications -applications $selectedApplications
-})
-
-$form.Controls.Add($selectPredeterminedButton)
 
 
 $importConfigButton = New-Object System.Windows.Forms.Button
